@@ -34,9 +34,6 @@ function UserItem({ userInfo }) {
     }
   };
 
-  React.useEffect(() => {
-    console.log(userInfo.picture);
-  });
   return (
     <div className="user-picture__item">
       <div>{getImage()}</div>

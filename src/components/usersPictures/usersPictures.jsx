@@ -1,22 +1,16 @@
 import React from 'react';
-import api from '../../api';
 import { Arrow } from '../../icons';
 import SearchInput from '../form/searchInput/searchInput';
 import SelectedRadio from '../form/selectedRadio/selectedRadio';
 import UserItem from '../userItem/userItem';
 import './usersPictures.scss';
-function UsersPictures() {
-  const [usersPicture, setUsersPicture] = React.useState();
+function UsersPictures({ usersArts }) {
   const [data, setData] = React.useState({
     activeSelect: false,
     selectedCategory: '',
     activeInput: false,
     inputValue: '',
   });
-
-  React.useEffect(() => {
-    api.usersPicture.fetchAll().then((data) => setUsersPicture(data));
-  }, []);
 
   const handleChange = (target) => {
     setData((pervState) => ({ ...pervState, [target.name]: target.value }));
@@ -28,6 +22,16 @@ function UsersPictures() {
   const handleShowSearch = () => {
     setData((pervState) => ({ ...pervState, activeInput: !pervState.activeInput }));
   };
+
+  const inputSearch = data.selectedCategory
+    ? usersArts.filter((item) => item.type === data.selectedCategory)
+    : usersArts;
+
+  const filteredUsers = inputSearch
+    ? inputSearch.filter(
+        (user) => user.fullName.toLowerCase().indexOf(data.inputValue.toLowerCase()) !== -1,
+      )
+    : inputSearch;
 
   return (
     <section className="artworks">
@@ -63,7 +67,7 @@ function UsersPictures() {
           </div>
         </div>
         <div className="wraper-user__items">
-          {usersPicture && usersPicture.map((user) => <UserItem key={user.id} userInfo={user} />)}
+          {filteredUsers && filteredUsers.map((user) => <UserItem key={user.id} userInfo={user} />)}
         </div>
       </div>
     </section>
