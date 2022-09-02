@@ -1,22 +1,32 @@
 import React from 'react';
 import api from '../../api';
 import { Arrow } from '../../icons';
+import SearchInput from '../form/searchInput/searchInput';
 import SelectedRadio from '../form/selectedRadio/selectedRadio';
 import UserItem from '../userItem/userItem';
 import './usersPictures.scss';
 function UsersPictures() {
   const [usersPicture, setUsersPicture] = React.useState();
-  const [category, setCategory] = React.useState({ active: true, selectedCategory: '' });
+  const [data, setData] = React.useState({
+    activeSelect: false,
+    selectedCategory: '',
+    activeInput: false,
+    inputValue: '',
+  });
 
   React.useEffect(() => {
     api.usersPicture.fetchAll().then((data) => setUsersPicture(data));
-    console.log(usersPicture);
   }, []);
+
   const handleChange = (target) => {
-    setCategory((pervState) => ({ ...pervState, selectedCategory: target.value }));
+    setData((pervState) => ({ ...pervState, [target.name]: target.value }));
   };
-  const handleOpenMenu = () => {
-    setCategory((pervState) => ({ ...pervState, active: !pervState.active }));
+
+  const handleShowMenu = () => {
+    setData((pervState) => ({ ...pervState, activeSelect: !pervState.activeSelect }));
+  };
+  const handleShowSearch = () => {
+    setData((pervState) => ({ ...pervState, activeInput: !pervState.activeInput }));
   };
 
   return (
@@ -30,20 +40,26 @@ function UsersPictures() {
           <div className="category-filter">
             <span>Category</span>
 
-            <span onClick={handleOpenMenu}>
+            <span className="wraper-arrow__button" onClick={handleShowMenu}>
               <Arrow />
             </span>
-            {category.active && (
+            {data.activeSelect && (
               <SelectedRadio
                 categories={['Sculpture', 'Architecture', 'Landscape', 'Graphic arts', 'Portrait']}
                 onChange={handleChange}
-                value={category.selectedCategory}
+                value={data.selectedCategory}
+                name="selectedCategory"
               />
             )}
           </div>
           <div className="name-filter">
             <span>Name</span>
-            <Arrow />
+            <span className="wraper-arrow__button" onClick={handleShowSearch}>
+              <Arrow />
+            </span>
+            {data.activeInput && (
+              <SearchInput value={data.inputValue} name="inputValue" onChange={handleChange} />
+            )}
           </div>
         </div>
         {usersPicture && usersPicture.map((user) => <UserItem key={user.id} userInfo={user} />)}
