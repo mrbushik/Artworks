@@ -15,6 +15,9 @@ function UsersPictures() {
   const handleChange = (target) => {
     setCategory((pervState) => ({ ...pervState, selectedCategory: target.value }));
   };
+  const handleOpenMenu = () => {
+    setCategory((pervState) => ({ ...pervState, active: !pervState.active }));
+  };
 
   return (
     <section className="artworks">
@@ -26,12 +29,17 @@ function UsersPictures() {
         <div className="artworks-filters__wraper">
           <div className="category-filter">
             <span>Category</span>
-            <Arrow />
-            <SelectedRadio
-              categories={['Sculpture', 'Architecture', 'Landscape', 'Graphic arts', 'Portrait']}
-              onChange={handleChange}
-              value={category.selectedCategory}
-            />
+
+            <span onClick={handleOpenMenu}>
+              <Arrow />
+            </span>
+            {category.active && (
+              <SelectedRadio
+                categories={['Sculpture', 'Architecture', 'Landscape', 'Graphic arts', 'Portrait']}
+                onChange={handleChange}
+                value={category.selectedCategory}
+              />
+            )}
           </div>
           <div className="name-filter">
             <span>Name</span>
