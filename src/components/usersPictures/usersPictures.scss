@@ -42,3 +42,8 @@
 .wraper-arrow__button{
     cursor: pointer;
 }
+.wraper-user__items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

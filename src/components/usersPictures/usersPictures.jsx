@@ -62,7 +62,9 @@ function UsersPictures() {
             )}
           </div>
         </div>
-        {usersPicture && usersPicture.map((user) => <UserItem key={user.id} userInfo={user} />)}
+        <div className="wraper-user__items">
+          {usersPicture && usersPicture.map((user) => <UserItem key={user.id} userInfo={user} />)}
+        </div>
       </div>
     </section>
   );
