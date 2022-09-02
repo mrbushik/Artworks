@@ -1,0 +1,41 @@
+.artworks {
+    margin-top: 166px;
+}
+
+.section-description {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        color: #000000;
+        margin: 0;
+    }
+
+}
+
+.artworks-filters__wraper {
+    margin-top: 85px;
+    margin-bottom: 60px;
+    display: flex;
+
+    span {
+        margin-right: 174px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 150%;
+        color: #000000;
+    }
+
+}
+
+.category-filter {
+    margin-right: 30px;
+}

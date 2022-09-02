@@ -2,6 +2,7 @@ import React from 'react';
 import { Home, Notifications, Settings, Arrow, Logo } from '../../icons';
 import './header.scss';
 import Userpic from '../../img/peopleAvatars/Userpic.png';
+import ArtWork1st from '../../img/picture/Artwork1st.png';
 
 function Header() {
   return (
