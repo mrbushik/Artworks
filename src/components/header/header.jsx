@@ -15,8 +15,11 @@ function Header() {
             <Home />
             <Notifications />
             <Settings />
-            <img src={Userpic} alt="your avatar" />
-            <Arrow />
+            <img className="header-avatar" src={Userpic} alt="your avatar" />
+            <div className="header-language__toggle">
+              <h4>ENG</h4>
+              <Arrow />
+            </div>
           </nav>
         </div>
       </div>
