@@ -3,14 +3,23 @@ import { Arrow } from '../../icons';
 import SearchInput from '../form/searchInput/searchInput';
 import SelectedRadio from '../form/selectedRadio/selectedRadio';
 import UserItem from '../userItem/userItem';
+import Pagination from '../pagination/pagination';
 import './usersPictures.scss';
 function UsersPictures({ usersArts }) {
+  const count = usersArts.length;
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const pageSize = 4;
   const [data, setData] = React.useState({
     activeSelect: false,
     selectedCategory: '',
     activeInput: false,
     inputValue: '',
   });
+
+  const handlePageChange = (pageIndex) => {
+    console.log(pageIndex);
+    setCurrentPage(pageIndex);
+  };
 
   const handleChange = (target) => {
     setData((pervState) => ({ ...pervState, [target.name]: target.value }));
@@ -67,8 +76,14 @@ function UsersPictures({ usersArts }) {
           </div>
         </div>
         <div className="wraper-user__items">
-          {filteredUsers && filteredUsers.map((user) => <UserItem key={user.id} userInfo={user} />)}
+          {count > 0 && filteredUsers.map((user) => <UserItem key={user.id} userInfo={user} />)}
         </div>
+        <Pagination
+          itemsCount={count}
+          pageSize={pageSize}
+          onPageChange={handlePageChange}
+          currentPage={currentPage}
+        />
       </div>
     </section>
   );
