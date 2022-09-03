@@ -5,8 +5,8 @@ import SelectedRadio from '../form/selectedRadio/selectedRadio';
 import UserItem from '../userItem/userItem';
 import Pagination from '../pagination/pagination';
 import './usersPictures.scss';
+import { paginate } from '../../utils/paginate';
 function UsersPictures({ usersArts }) {
-  const count = usersArts.length;
   const [currentPage, setCurrentPage] = React.useState(1);
   const pageSize = 4;
   const [data, setData] = React.useState({
@@ -17,7 +17,6 @@ function UsersPictures({ usersArts }) {
   });
 
   const handlePageChange = (pageIndex) => {
-    console.log(pageIndex);
     setCurrentPage(pageIndex);
   };
 
@@ -41,6 +40,9 @@ function UsersPictures({ usersArts }) {
         (user) => user.fullName.toLowerCase().indexOf(data.inputValue.toLowerCase()) !== -1,
       )
     : inputSearch;
+
+  const usersCrop = paginate(filteredUsers, currentPage, pageSize);
+  const count = filteredUsers.length;
 
   return (
     <section className="artworks">
@@ -76,7 +78,7 @@ function UsersPictures({ usersArts }) {
           </div>
         </div>
         <div className="wraper-user__items">
-          {count > 0 && filteredUsers.map((user) => <UserItem key={user.id} userInfo={user} />)}
+          {count > 0 && usersCrop.map((user) => <UserItem key={user.id} userInfo={user} />)}
         </div>
         <Pagination
           itemsCount={count}
