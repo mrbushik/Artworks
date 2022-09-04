@@ -10,7 +10,7 @@ function Header() {
       <div className="container">
         <div className="header-wraper">
           <nav>
-            <Logo />
+            <Logo color={'black'} />
           </nav>
           <nav className="header-settings">
             <Home />

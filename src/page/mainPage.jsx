@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/header/header';
 import UsersPictures from '../components/usersPictures/usersPictures';
 import api from '../api';
+import Footer from '../components/footer/footer';
 
 function MainPage() {
   const [usersItem, setUsersItem] = React.useState();
@@ -11,7 +12,8 @@ function MainPage() {
   return (
     <>
       <Header />
-      {usersItem && <UsersPictures usersArts={usersItem} />}
+      {/* {usersItem && <UsersPictures usersArts={usersItem} />} */}
+      {/* <Footer /> */}
     </>
   );
 }

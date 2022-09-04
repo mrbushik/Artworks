@@ -34,13 +34,10 @@ function UserItem({ userInfo, onDelete }) {
       return <img src={Artist4} alt="artist" />;
     }
   };
-  const handleDelete = (id) => {
-    onDelete(id);
-    // console.log(id);
-  };
+
   return (
     <div className="user-picture__item">
-      <div onClick={() => handleDelete(userInfo.id)} className="user-basket-round">
+      <div onClick={() => onDelete(userInfo.id)} className="user-basket-round">
         <Basket />
       </div>
       <div>{getImage()}</div>

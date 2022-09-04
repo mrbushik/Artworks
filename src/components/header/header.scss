@@ -47,3 +47,12 @@ header {
     }
 
 }
+@media(max-width:555px){
+    .header-language__toggle{
+        svg{
+            // &:nth-child(1){
+                display: none;
+            // }
+        }
+    }
+}
