@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import _ from 'lodash';
 import './pagination.scss';
@@ -9,7 +10,7 @@ function Pagination({ itemsCount, pageSize, onPageChange, currentPage }) {
   const pages = _.range(1, pageCount + 1);
 
   const viewNextPage = () => {
-    if (pageSwitch < 4) {
+    if (pageSwitch < pageCount - 1) {
       setPageSwitch((pervState) => pervState + 1);
     }
   };
@@ -26,6 +27,7 @@ function Pagination({ itemsCount, pageSize, onPageChange, currentPage }) {
       return pages.slice(numberPage - 1, numberPage + 2);
     }
   };
+
   const targetPages = cutPagesArray(pageSwitch);
   return (
     <nav className="pagination-main__container">

@@ -23,6 +23,7 @@
     margin-top: 85px;
     margin-bottom: 60px;
     display: flex;
+    flex-wrap: wrap;
 
     span {
         margin-right: 174px;
@@ -46,4 +47,30 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+@media (max-width: 885px) {
+.wraper-arrow__button{
+    &:last-child{
+        margin-right: 0;
+    }
+
+}
+.pagination-container{
+    flex-direction: column;
+}
+.pagination-items__counter{
+    margin-top: 20px;
+}
+}
+@media (max-width: 558px) {
+.category-filter{
+    margin-bottom: 30px;
+}
+
+.name-filter{
+    width: 261px;  
+    .wraper-arrow__button{
+        margin-left: 25px;
+    } 
+}
 }

@@ -9,10 +9,13 @@ function MainPage() {
   React.useEffect(() => {
     api.usersPicture.fetchAll().then((data) => setUsersItem(data));
   }, []);
+  const handleDeleteUsersItem = (id) => {
+    setUsersItem(usersItem.filter((user) => user.id !== id));
+  };
   return (
     <>
       <Header />
-      {/* {usersItem && <UsersPictures usersArts={usersItem} />} */}
+      {usersItem && <UsersPictures usersArray={usersItem} onDelete={handleDeleteUsersItem} />}
       {/* <Footer /> */}
     </>
   );
