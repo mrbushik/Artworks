@@ -32,7 +32,7 @@
         &:last-child {
             flex-direction: inherit;
             flex-wrap: wrap;
-            margin-left: 20px;
+            margin-left: 30px;
         }
     }
 }
@@ -63,4 +63,21 @@
 .footer-sotial__link{
     margin-right: 16px;
 
+}
+@media (max-width: 619px) {
+.footer-container{
+    flex-direction: column;
+    width: fit-content;
+margin: 0 auto;
+    li{
+        &:last-child{
+            margin-left: 0;
+        }
+
+    }
+
+}
+.footer-sotial__container{
+    margin-top: 30px;
+}
 }

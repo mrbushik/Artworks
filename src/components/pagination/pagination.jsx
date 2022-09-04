@@ -58,7 +58,7 @@ function Pagination({ itemsCount, pageSize, onPageChange, currentPage }) {
           </li>
         </ul>
         <div className="pagination-items__counter">
-          <span>
+          <span className="pagination-counter__text">
             {' '}
             {currentPage * 4 - 4}-{currentPage * 4} of {itemsCount} Results
           </span>

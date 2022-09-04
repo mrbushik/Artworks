@@ -12,7 +12,7 @@ import { Basket } from '../../icons';
 function UserItem({ userInfo, onDelete }) {
   const getImage = () => {
     // если данные были на сервере то этого можно избежать и сразу вставлять изображения
-    if (userInfo.picture == 1) {
+    if (userInfo.picture === 1) {
       return <img src={Artwork1} alt="artwork" />;
     } else if (userInfo.picture === 2) {
       return <img src={Artwork2} alt="artwork" />;
@@ -25,13 +25,13 @@ function UserItem({ userInfo, onDelete }) {
   const getAvatar = () => {
     // тоже самое при наличии данных сервера не пришлось писать костыли
     if (userInfo.fullName === 'George Dillan') {
-      return <img src={Artist1} alt="artist" />;
+      return <img className="artist-img" src={Artist1} alt="artist" />;
     } else if (userInfo.fullName === 'Peggy Wood') {
-      return <img src={Artist2} alt="artist" />;
+      return <img className="artist-img" src={Artist2} alt="artist" />;
     } else if (userInfo.fullName === 'Alice Gordan') {
-      return <img src={Artist3} alt="artist" />;
+      return <img className="artist-img" src={Artist3} alt="artist" />;
     } else if (userInfo.fullName === 'Timothy Taylor') {
-      return <img src={Artist4} alt="artist" />;
+      return <img className="artist-img" src={Artist4} alt="artist" />;
     }
   };
 
@@ -40,7 +40,7 @@ function UserItem({ userInfo, onDelete }) {
       <div onClick={() => onDelete(userInfo.id)} className="user-basket-round">
         <Basket />
       </div>
-      <div>{getImage()}</div>
+      <div className="artist-img__container">{getImage()}</div>
       <div className="artist-info">
         <div className="artist-avatar">{getAvatar()}</div>
         <div className="artist-description">

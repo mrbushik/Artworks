@@ -16,7 +16,7 @@ function MainPage() {
     <>
       <Header />
       {usersItem && <UsersPictures usersArray={usersItem} onDelete={handleDeleteUsersItem} />}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

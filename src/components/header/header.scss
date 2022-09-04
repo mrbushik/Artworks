@@ -48,15 +48,9 @@ header {
 
 }
 
-// @media (max-width: 1000px) {
-//     .header-wraper{
-//         display: none;
-//     }
-// }
 @media (max-width: 555px) {
     .header-settings {
 
-        // display: none;
         svg {
             display: block;
 
@@ -66,9 +60,9 @@ header {
                 display: none;
             }
         }
-
     }
-    .header-language__toggle{
-        display: none;  
+
+    .header-language__toggle {
+        display: none;
     }
 }
