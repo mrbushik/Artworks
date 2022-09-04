@@ -1,4 +1,4 @@
-.user-picture__item{
+.user-picture__item {
     margin-right: 30px;
     margin-bottom: 50px;
 }
@@ -8,6 +8,21 @@
     display: flex;
     align-items: center;
 }
+
+.user-basket-round {
+    width: 34px;
+    height: 34px;
+    background: rgba(184, 184, 184, 0.6);
+    backdrop-filter: blur(6px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: 286px;
+    margin-top: 10px;
+}
+
 
 .artist-description {
     margin-left: 10px;

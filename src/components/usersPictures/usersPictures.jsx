@@ -8,6 +8,7 @@ import './usersPictures.scss';
 import { paginate } from '../../utils/paginate';
 function UsersPictures({ usersArts }) {
   const [currentPage, setCurrentPage] = React.useState(1);
+  const [userItemData, setUsersItemData] = React.useState(usersArts);
   const pageSize = 4;
   const [data, setData] = React.useState({
     activeSelect: false,
@@ -30,6 +31,10 @@ function UsersPictures({ usersArts }) {
   const handleShowSearch = () => {
     setData((pervState) => ({ ...pervState, activeInput: !pervState.activeInput }));
   };
+  const handleDeleteUsersItem = (id) => {
+    setUsersItemData(userItemData.filter((user) => user.id !== id));
+    console.log(userItemData);
+  };
 
   const inputSearch = data.selectedCategory
     ? usersArts.filter((item) => item.type === data.selectedCategory)
@@ -40,6 +45,8 @@ function UsersPictures({ usersArts }) {
         (user) => user.fullName.toLowerCase().indexOf(data.inputValue.toLowerCase()) !== -1,
       )
     : inputSearch;
+
+  // const
 
   const usersCrop = paginate(filteredUsers, currentPage, pageSize);
   const count = filteredUsers.length;
@@ -78,7 +85,10 @@ function UsersPictures({ usersArts }) {
           </div>
         </div>
         <div className="wraper-user__items">
-          {count > 0 && usersCrop.map((user) => <UserItem key={user.id} userInfo={user} />)}
+          {count > 0 &&
+            usersCrop.map((user) => (
+              <UserItem key={user.id} onDelete={handleDeleteUsersItem} userInfo={user} />
+            ))}
         </div>
         <Pagination
           itemsCount={count}

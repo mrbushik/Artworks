@@ -8,7 +8,8 @@ import Artist2 from '../../img/peopleAvatars/ArtistPeggy.png';
 import Artist3 from '../../img/peopleAvatars/ArtistAlice.png';
 import Artist4 from '../../img/peopleAvatars/ArtistThimony.png';
 import './userItem.scss';
-function UserItem({ userInfo }) {
+import { Basket } from '../../icons';
+function UserItem({ userInfo, onDelete }) {
   const getImage = () => {
     // если данные были на сервере то этого можно избежать и сразу вставлять изображения
     if (userInfo.picture == 1) {
@@ -33,9 +34,15 @@ function UserItem({ userInfo }) {
       return <img src={Artist4} alt="artist" />;
     }
   };
-
+  const handleDelete = (id) => {
+    onDelete(id);
+    // console.log(id);
+  };
   return (
     <div className="user-picture__item">
+      <div onClick={() => handleDelete(userInfo.id)} className="user-basket-round">
+        <Basket />
+      </div>
       <div>{getImage()}</div>
       <div className="artist-info">
         <div className="artist-avatar">{getAvatar()}</div>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import _, { set } from 'lodash';
+import React from 'react';
+import _ from 'lodash';
 import './pagination.scss';
 import { Arrow } from '../../icons';
 function Pagination({ itemsCount, pageSize, onPageChange, currentPage }) {
@@ -20,7 +20,6 @@ function Pagination({ itemsCount, pageSize, onPageChange, currentPage }) {
   };
 
   const cutPagesArray = (numberPage) => {
-    console.log('number' + numberPage);
     if (pages.length === 3 || pages.length < 3) {
       return pages;
     } else {
@@ -28,36 +27,40 @@ function Pagination({ itemsCount, pageSize, onPageChange, currentPage }) {
     }
   };
   const targetPages = cutPagesArray(pageSwitch);
-  console.log(targetPages);
   return (
-    <nav>
-      <ul className="pagination-list">
-        <li onClick={viewPerviusPage}>
-          {' '}
-          <Arrow />
-        </li>
-        {targetPages.map((page) => (
-          <li
-            onClick={() => onPageChange(page)}
-            className={page === currentPage ? 'pagination-active' : ''}
-            key={'page ' + page}>
-            <a>{page}</a>
+    <nav className="pagination-main__container">
+      <div className="pagination-container">
+        <ul className="pagination-list">
+          <li onClick={viewPerviusPage}>
+            {' '}
+            <Arrow />
           </li>
-        ))}
-        <li className="pagination-plug">...</li>
-        {pages.length > 3 ? (
-          <li onClick={() => onPageChange(pages[pages.length - 1])}>{pages[pages.length - 1]}</li>
-        ) : (
-          ''
-        )}
+          {targetPages.map((page) => (
+            <li
+              onClick={() => onPageChange(page)}
+              className={page === currentPage ? 'pagination-active' : ''}
+              key={'page ' + page}>
+              <a>{page}</a>
+            </li>
+          ))}
+          <li className="pagination-plug">...</li>
+          {pages.length > 3 ? (
+            <li onClick={() => onPageChange(pages[pages.length - 1])}>{pages[pages.length - 1]}</li>
+          ) : (
+            ''
+          )}
 
-        <li onClick={viewNextPage}>
-          {' '}
-          <Arrow />
-        </li>
-      </ul>
-      <div className="">
-        {currentPage * 4 - 4}-{currentPage * 4} of {itemsCount}
+          <li onClick={viewNextPage}>
+            {' '}
+            <Arrow />
+          </li>
+        </ul>
+        <div className="pagination-items__counter">
+          <span>
+            {' '}
+            {currentPage * 4 - 4}-{currentPage * 4} of {itemsCount} Results
+          </span>
+        </div>
       </div>
     </nav>
   );
