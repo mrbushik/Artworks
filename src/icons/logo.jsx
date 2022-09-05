@@ -1,5 +1,6 @@
 import { StyledStrokedIcon } from './icon';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const Logo = ({ color }) => (
   <StyledStrokedIcon
@@ -38,3 +39,6 @@ export const Logo = ({ color }) => (
     />
   </StyledStrokedIcon>
 );
+Logo.propTypes = {
+  color: PropTypes.string.isRequired,
+};

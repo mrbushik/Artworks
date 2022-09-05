@@ -7,6 +7,7 @@ import Artist1 from '../../img/peopleAvatars/ArtistGeorge.png';
 import Artist2 from '../../img/peopleAvatars/ArtistPeggy.png';
 import Artist3 from '../../img/peopleAvatars/ArtistAlice.png';
 import Artist4 from '../../img/peopleAvatars/ArtistThimony.png';
+import PropTypes from 'prop-types';
 import './userItem.scss';
 import { Basket } from '../../icons';
 function UserItem({ userInfo, onDelete }) {
@@ -51,5 +52,8 @@ function UserItem({ userInfo, onDelete }) {
     </div>
   );
 }
-
+UserItem.propTypes = {
+  userInfo: PropTypes.object.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 export default UserItem;

@@ -3,6 +3,7 @@ import React from 'react';
 import _ from 'lodash';
 import './pagination.scss';
 import { Arrow } from '../../icons';
+import PropTypes from 'prop-types';
 function Pagination({ itemsCount, pageSize, onPageChange, currentPage }) {
   const [pageSwitch, setPageSwitch] = React.useState(currentPage);
   const pageCount = Math.ceil(itemsCount / pageSize);
@@ -67,5 +68,11 @@ function Pagination({ itemsCount, pageSize, onPageChange, currentPage }) {
     </nav>
   );
 }
-
+Pagination.propTypes = {
+  // itemsCount, pageSize, onPageChange, currentPage
+  itemsCount: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+};
 export default Pagination;

@@ -6,6 +6,8 @@ import UserItem from '../userItem/userItem';
 import Pagination from '../pagination/pagination';
 import './usersPictures.scss';
 import { paginate } from '../../utils/paginate';
+import PropTypes from 'prop-types';
+
 function UsersPictures({ usersArray, onDelete }) {
   const [currentPage, setCurrentPage] = React.useState(1);
   const pageSize = 4;
@@ -90,5 +92,10 @@ function UsersPictures({ usersArray, onDelete }) {
     </section>
   );
 }
+
+UsersPictures.propTypes = {
+  onDelete: PropTypes.func.isRequired,
+  usersArray: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default UsersPictures;
