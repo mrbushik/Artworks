@@ -33,6 +33,8 @@ function UserItem({ userInfo, onDelete }) {
       return <img className="artist-img" src={Artist3} alt="artist" />;
     } else if (userInfo.fullName === 'Timothy Taylor') {
       return <img className="artist-img" src={Artist4} alt="artist" />;
+    } else {
+      return <div className="artist-without__avatar"></div>;
     }
   };
 

@@ -49,6 +49,14 @@
     }
 }
 
+.artist-without__avatar {
+    height: 38px;
+    width: 38px;
+    background: rgba(184, 184, 184, 0.6);
+    border-radius: 50%;
+}
+
+
 @media (max-width: 558px) {
     .user-picture__item {
         margin-right: 0;
